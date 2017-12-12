@@ -135,6 +135,22 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+       materialSearchView.setOnSearchViewListener(new MaterialSearchView.SearchViewListener() {
+            @Override
+            public void onSearchViewShown() {
+                inviteview.setVisibility(View.VISIBLE);
+                nouser.setVisibility(View.VISIBLE);
+                usernotavalible.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onSearchViewClosed() {
+                inviteview.setVisibility(View.GONE);
+                //adapter = new ListingAdapter(getApplicationContext(), users);
+                allusers.setAdapter(null);
+            }
+        });
+
         materialSearchView.setOnQueryTextListener(new MaterialSearchView.OnQueryTextListener() {
 
             @Override
@@ -179,7 +195,9 @@ public class MainActivity extends AppCompatActivity {
             public boolean onQueryTextChange(String newText) {
                 progressBar.setVisibility(View.VISIBLE);
                 usernotavalible.setVisibility(View.GONE);
-                nouser.setVisibility(View.VISIBLE);
+                nouser.setVisibility(View.GONE);
+
+                    allusers.setAdapter(null);
               /*  progressBar.setVisibility(View.VISIBLE);
                 databaseReference.child("users").orderByChild("name").equalTo(newText).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
