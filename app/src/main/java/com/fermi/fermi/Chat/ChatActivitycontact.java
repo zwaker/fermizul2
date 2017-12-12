@@ -246,13 +246,15 @@ public class ChatActivitycontact extends AppCompatActivity {
                 // Pass the Film object to the array of Film objects
                 //messagesList.add(chatMessage);
                 //mAdapter.notifyDataSetChanged();
-
+                 message.setText("");
                 long time = today.getTime();
                 mDatabase.child("users").child(login_udid).child("Conversation_person").child(uid).setValue(new ChatModel(username, profile, uid, email, "No", avaliblemeg, "0", new Date().getTime()));
                 mDatabase.child("users").child(uid).child("Conversation_person").child(login_udid).setValue(new ChatModel(loginperson_name, login_profile, login_udid, login_email, "yes", avaliblemeg, "1", new Date().getTime()));
                 mDatabase.child("users").child(login_udid).child("Chat").child(uid).child("ChatList").push().setValue(chatMessage);
                 mDatabase.child("users").child(uid).child("Chat").child(login_udid).child("ChatList").push().setValue(new ChatMessage(avaliblemeg, "1"));
-                message.setText("");
+                mDatabase.child("users").child(uid).child("messagetime").setValue(new Date().getTime());
+                mDatabase.child("users").child(login_udid).child("messagetime").setValue(new Date().getTime());
+              
             }
         });
 
