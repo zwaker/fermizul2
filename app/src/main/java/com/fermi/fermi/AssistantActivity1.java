@@ -19,9 +19,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.fermi.fermi.Chat.ChatActivitySearch;
-import com.fermi.fermi.adapter.CustomMessageAdapter;
-import com.fermi.fermi.adapter.MessageModel;
+import com.example.fermi.fermi.Chat.ChatActivitySearch;
+import com.example.fermi.fermi.adapter.CustomMessageAdapter;
+import com.example.fermi.fermi.adapter.MessageModel;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -156,7 +156,7 @@ public class AssistantActivity1 extends AppCompatActivity {
         messageModelArrayList.add(messageModel);
         custommessageAdapter = new CustomMessageAdapter(AssistantActivity1.this,messageModelArrayList);
         messagelist.setAdapter(custommessageAdapter);
-        fourthmessage("Maths");
+        fourthmessage("maths");
 
     }
 
@@ -168,7 +168,7 @@ public class AssistantActivity1 extends AppCompatActivity {
         messageModelArrayList.add(messageModel);
         custommessageAdapter = new CustomMessageAdapter(AssistantActivity1.this,messageModelArrayList);
         messagelist.setAdapter(custommessageAdapter);
-        fourthmessage("Chemistry");
+        fourthmessage("chemistry");
 
     }
 
@@ -180,7 +180,7 @@ public class AssistantActivity1 extends AppCompatActivity {
         messageModelArrayList.add(messageModel);
         custommessageAdapter = new CustomMessageAdapter(AssistantActivity1.this,messageModelArrayList);
         messagelist.setAdapter(custommessageAdapter);
-        fourthmessage("Health");
+        fourthmessage("health");
     }
 
     public void subjectChosenArt(View view) {
@@ -191,7 +191,7 @@ public class AssistantActivity1 extends AppCompatActivity {
         messageModelArrayList.add(messageModel);
         custommessageAdapter = new CustomMessageAdapter(AssistantActivity1.this,messageModelArrayList);
         messagelist.setAdapter(custommessageAdapter);
-        fourthmessage("Art");
+        fourthmessage("art");
     }
 
     public void subjectChosenFitness(View view) {
@@ -202,7 +202,7 @@ public class AssistantActivity1 extends AppCompatActivity {
         messageModelArrayList.add(messageModel);
         custommessageAdapter = new CustomMessageAdapter(AssistantActivity1.this,messageModelArrayList);
         messagelist.setAdapter(custommessageAdapter);
-        fourthmessage("Fitness");
+        fourthmessage("fitness");
     }
 
     public void subjectChosenbiology(View view) {
@@ -213,7 +213,7 @@ public class AssistantActivity1 extends AppCompatActivity {
         messageModelArrayList.add(messageModel);
         custommessageAdapter = new CustomMessageAdapter(AssistantActivity1.this,messageModelArrayList);
         messagelist.setAdapter(custommessageAdapter);
-        fourthmessage("Biology");
+        fourthmessage("biology");
 
     }
 
@@ -225,7 +225,7 @@ public class AssistantActivity1 extends AppCompatActivity {
         messageModelArrayList.add(messageModel);
         custommessageAdapter = new CustomMessageAdapter(AssistantActivity1.this,messageModelArrayList);
         messagelist.setAdapter(custommessageAdapter);
-        fourthmessage("Physics");
+        fourthmessage("physics");
 
     }
     private void fourthmessage(final String name) {
@@ -297,7 +297,49 @@ public class AssistantActivity1 extends AppCompatActivity {
 
     public void getDataFromServer(final String save) {
         //showProgressDialog();
-        databaseReference.child("users").addValueEventListener(new ValueEventListener() {
+        databaseReference.child("users").orderByChild(save).equalTo(true).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                users.clear();
+                if (dataSnapshot.exists()) {
+                    for (DataSnapshot postSnapShot : dataSnapshot.getChildren()) {
+                        User user = postSnapShot.getValue(User.class);
+
+                        try {
+                            if (!user.getName().equals(FirebaseAuth.getInstance().getCurrentUser().getDisplayName())){
+
+                                users.add(user);
+                                adapter.notifyDataSetChanged();
+
+                                /*Collections.sort(users, new Comparator<User>() {
+                                    @Override
+                                    public int compare(User u1, User u2) {
+                                        
+                                        String strLong = Long.toString(u1.getMessagetime());
+                                        String strLong1 = Long.toString(u2.getMessagetime());
+
+                                       // Log.d("messagetimeand",strLong+"  "+strLong3);
+                                        return strLong1.compareTo(strLong);
+                                    }
+                                });*/
+                            }
+                        }
+                        catch (Exception e){
+                        }
+                    }
+                }
+                // hideProgressDialog();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // hideProgressDialog();
+            }
+        });
+
+
+       /* databaseReference.child("users").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 users.clear();
@@ -365,10 +407,8 @@ public class AssistantActivity1 extends AppCompatActivity {
             public void onCancelled(DatabaseError databaseError) {
                 // hideProgressDialog();
             }
-        });
+        });*/
     }
-
-
 
     private class ListingAdapter extends RecyclerView.Adapter<ListingAdapter.ViewHolder> {
         Context context;
@@ -441,7 +481,16 @@ public class AssistantActivity1 extends AppCompatActivity {
                 holder.fullname.setText(user.getName());
                 holder.email.setText(user.getEmail());
                 holder.uid_name.setText(user.getUdid());
-                holder.profileurl.setText(user.getProfile());
+
+                String profile=user.getProfile();
+
+                if (profile==null){
+                    holder.profileurl.setText("not profile avalible");
+                }else {
+                    holder.profileurl.setText(user.getProfile());
+                }
+
+
                 Glide.with(getApplicationContext())
                         .load(user.getProfile())
                         .placeholder(R.drawable.profile)
