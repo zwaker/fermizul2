@@ -28,9 +28,9 @@
     <string name="btn_sign_out">Sign Out</string>
     <string name="lbl_forgot_password">Forgot password?</string>
     <string name="forgot_password_msg">We just need your registered Email Id to sent you password reset instructions.</string>
-    <string name="facebook_app_id" translatable="false">1050548171714932</string>
-    <string name="fb_login_protocol_scheme">fb1050548171714932</string>
-    <string name="facebook_application_id" translatable="false">1050548171714932</string>
+    <string name="facebook_app_id" translatable="false">125815404869066</string>
+    <string name="fb_login_protocol_scheme">125815404869066</string>
+    <string name="facebook_application_id" translatable="false">125815404869066</string>
     <string name="ask_help">Would you also like to assist people with their problems ?</string>
     <!-- TODO: Remove or change this placeholder text -->\
     <string name="hello_blank_fragment">Hello blank fragment</string>
