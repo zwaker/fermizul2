@@ -312,17 +312,17 @@ public class AssistantActivity1 extends AppCompatActivity {
                                 users.add(user);
                                 adapter.notifyDataSetChanged();
 
-                                /*Collections.sort(users, new Comparator<User>() {
+                                Collections.sort(users, new Comparator<User>() {
                                     @Override
                                     public int compare(User u1, User u2) {
-                                        
-                                        String strLong = Long.toString(u1.getMessagetime());
-                                        String strLong1 = Long.toString(u2.getMessagetime());
 
-                                       // Log.d("messagetimeand",strLong+"  "+strLong3);
+                                        String strLong = Long.toString(u1.getMessageTime());
+                                        String strLong1 = Long.toString(u2.getMessageTime());
+
+                                        Log.d("messagetimeand",strLong+"  "+strLong1);
                                         return strLong1.compareTo(strLong);
                                     }
-                                });*/
+                                });
                             }
                         }
                         catch (Exception e){
