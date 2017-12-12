@@ -93,7 +93,9 @@ public class GetProfileActivity extends AppCompatActivity {
             } else {
                 Log.i("GetProfile", "Photo exists returned =" + user.getPhotoUrl());
                 DownloadImagesTask2 task2 = new DownloadImagesTask2();
-                uri = user.getPhotoUrl();
+                if(user.getPhotoUrl()!=null) {
+                    uri = user.getPhotoUrl();
+                }
                 task2.execute(user.getPhotoUrl().toString());
                 isImageSet = true;
                 text.setVisibility(View.GONE);

@@ -194,7 +194,9 @@ public class UpdateProfileActivity extends AppCompatActivity {
                                                     @Override
                                                     public void onDataChange(DataSnapshot dataSnapshot) {
                                                         mUser = dataSnapshot.getValue(User.class);
-                                                        mDatabase.child("users").child(user.getUid()).child("profile").setValue(user.getPhotoUrl().toString());
+                                                        if(user.getPhotoUrl()!=null) {
+                                                            mDatabase.child("users").child(user.getUid()).child("profile").setValue(user.getPhotoUrl().toString());
+                                                        }
                                                         mDatabase.child("users").child(user.getUid()).child("name").setValue(name.getText().toString().trim());
                                                         if (qualification.getText().toString().trim().equals("")) {
                                                             mDatabase.child("users").child(user.getUid()).child("Qualification").setValue("not avalible plz update");

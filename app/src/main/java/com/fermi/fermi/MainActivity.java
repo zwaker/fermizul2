@@ -178,6 +178,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onQueryTextChange(String newText) {
                 progressBar.setVisibility(View.VISIBLE);
+                usernotavalible.setVisibility(View.GONE);
+                nouser.setVisibility(View.VISIBLE);
               /*  progressBar.setVisibility(View.VISIBLE);
                 databaseReference.child("users").orderByChild("name").equalTo(newText).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
@@ -574,12 +576,17 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);
             alertDialog.dismiss();
-            adapter = new ListingAdapter(getApplicationContext(), users1);
-            allusers.setAdapter(adapter);
-            allusers.setEmptyView(findViewById(R.id.user_not_avalible));
-            nouser.setVisibility(View.GONE);
-            progressBar.setVisibility(View.GONE);
+            if(!users1.isEmpty()) {
+                adapter = new ListingAdapter(getApplicationContext(), users1);
+                allusers.setAdapter(adapter);
+                allusers.setEmptyView(findViewById(R.id.user_not_avalible));
+                nouser.setVisibility(View.GONE);
 
+            }
+            else{
+                usernotavalible.setVisibility(View.VISIBLE);
+            }
+            progressBar.setVisibility(View.GONE);
         }
 
     }

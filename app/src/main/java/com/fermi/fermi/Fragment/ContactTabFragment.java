@@ -223,6 +223,7 @@ public class ContactTabFragment extends Fragment {
 
                         if (dataSnapshot.exists()) {
                             for (DataSnapshot postSnapShot : dataSnapshot.getChildren()) {
+
                                 ContactModel user = postSnapShot.getValue(ContactModel.class);
 
                                 if (user.getStatus().equals("Friend")){

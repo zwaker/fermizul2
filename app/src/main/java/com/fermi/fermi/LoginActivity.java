@@ -339,6 +339,16 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         User mUser = dataSnapshot.getValue(User.class);
+                        if(mUser==null) {
+                            mUser = new User();
+                            mUser.setName(auth.getCurrentUser().getDisplayName());
+                            mUser.setEmail(auth.getCurrentUser().getEmail());
+                            if(auth.getCurrentUser().getPhotoUrl()!=null) {
+                                mUser.setProfile(auth.getCurrentUser().getPhotoUrl().toString());
+                            }
+                            mUser.setUdid(auth.getCurrentUser().getUid());
+                            mDatabase.child("users").child(auth.getCurrentUser().getUid()).setValue(mUser);
+                        }
                         try {
                             if (mUser.isHasAnswered()) {
                                 startActivity(new Intent(LoginActivity.this, MainActivity.class));
