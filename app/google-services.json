@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:237015930587:android:8e9d5be5b38e1f76",
         "android_client_info": {
-          "package_name": "com.example.fermi.fermi"
+          "package_name": "com.fermi.fermi"
         }
       },
       "oauth_client": [

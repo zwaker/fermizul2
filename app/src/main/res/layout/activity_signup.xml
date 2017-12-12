@@ -6,7 +6,7 @@
     android:background="@color/colorPrimary"
     android:gravity="center_horizontal"
     android:paddingTop="15dp"
-    tools:context="com.example.fermi.fermi.SignupActivity">
+    tools:context="com.fermi.fermi.SignupActivity">
 
 <!--   <com.facebook.login.widget.LoginButton
        android:id="@+id/login_button"

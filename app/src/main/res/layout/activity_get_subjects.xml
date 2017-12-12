@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.fermi.fermi.GetSubjectsActivity">
+    tools:context="com.fermi.fermi.GetSubjectsActivity">
 
     <ProgressBar
         android:id="@+id/progress_bar_get_subjects"

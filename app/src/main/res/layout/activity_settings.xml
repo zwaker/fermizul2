@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:animateLayoutChanges="true"
-    tools:context="com.example.fermi.fermi.SettingActivity">
+    tools:context="com.fermi.fermi.SettingActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/Toolbar"

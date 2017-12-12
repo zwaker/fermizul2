@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Fermi-master.iml" filepath="$PROJECT_DIR$/Fermi-master.iml" />
+      <module fileurl="file://E:\GitHub\fermizul2\fermizul2\Fermi-master.iml" filepath="E:\GitHub\fermizul2\fermizul2\Fermi-master.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fermizul2.iml" filepath="$PROJECT_DIR$/fermizul2.iml" />
     </modules>
   </component>
 </project>

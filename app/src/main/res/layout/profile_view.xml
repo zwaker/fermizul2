@@ -72,7 +72,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_above="@+id/scrollView"
-            app:layout_behavior="com.example.fermi.fermi.WhatsappHeaderBehavior" />
+            app:layout_behavior="com.fermi.fermi.WhatsappHeaderBehavior" />
 
         <android.support.v4.widget.NestedScrollView
             android:id="@+id/scrollView"
