@@ -201,6 +201,8 @@ public class ChatActivitySearch extends AppCompatActivity {
                 mDatabase.child("users").child(uid).child("Conversation_person").child(login_udid).setValue(new ChatModel(loginperson_name, login_profile, login_udid, login_email, "yes", avaliblemeg, "1", new Date().getTime()));
                 mDatabase.child("users").child(login_udid).child("Chat").child(uid).child("ChatList").push().setValue(chatMessage);
                 mDatabase.child("users").child(uid).child("Chat").child(login_udid).child("ChatList").push().setValue(new ChatMessage(avaliblemeg, "1"));
+                mDatabase.child("users").child(uid).child("messagetime").setValue(new Date().getTime());
+                mDatabase.child("users").child(login_udid).child("messagetime").setValue(new Date().getTime());
             }
         });
 
