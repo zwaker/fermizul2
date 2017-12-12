@@ -6,12 +6,19 @@ package com.fermi.fermi;
 
 public class User {
     String name = "",email="",profile="",udid="";
+    private long messageTime;
     boolean hasAnswered = false, isHelper = false, maths = false, physics = false, chemistry = false, biology = false, arts = false, health = false, fitness = false;
 
     User() {
         //default constructor required
     }
+    public long getMessageTime() {
+        return messageTime;
+    }
 
+    public void setMessageTime(long messageTime) {
+        this.messageTime = messageTime;
+    }
     public boolean isHasAnswered() {
         return hasAnswered;
     }
@@ -114,3 +121,4 @@ public class User {
         this.fitness = fitness;
     }
 }
+
