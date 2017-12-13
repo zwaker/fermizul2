@@ -121,19 +121,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        materialSearchView.setOnSearchViewListener(new MaterialSearchView.SearchViewListener() {
-            @Override
-            public void onSearchViewShown() {
-                inviteview.setVisibility(View.VISIBLE);
-            }
-
-            @Override
-            public void onSearchViewClosed() {
-                inviteview.setVisibility(View.GONE);
-                //adapter = new ListingAdapter(getApplicationContext(), users);
-                allusers.setAdapter(null);
-            }
-        });
 
        materialSearchView.setOnSearchViewListener(new MaterialSearchView.SearchViewListener() {
             @Override

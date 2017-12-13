@@ -19,9 +19,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.example.fermi.fermi.Chat.ChatActivitySearch;
-import com.example.fermi.fermi.adapter.CustomMessageAdapter;
-import com.example.fermi.fermi.adapter.MessageModel;
+import com.fermi.fermi.adapter.CustomMessageAdapter;
+import com.fermi.fermi.adapter.MessageModel;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -31,6 +30,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
